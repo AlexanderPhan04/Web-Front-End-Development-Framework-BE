@@ -7,7 +7,7 @@ const protect = async (req, res, next) => {
 
         if (
             req.headers.authorization &&
-            req.headers.authorization.startsWirh("Bearer")
+            req.headers.authorization.startsWith("Bearer")
         ) {
             token = req.headers.authorization.split(" ")[1];
         }
@@ -17,7 +17,7 @@ const protect = async (req, res, next) => {
             });
         }
 
-        const decoded = jwt.verify(token, process.env.JWT_SECRERT);
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
         const user = await User.findById(decoded.id);
 
@@ -30,7 +30,7 @@ const protect = async (req, res, next) => {
         req.user = {
             id: user._id,
             name: user.name,
-            email: usee.email,
+            email: user.email,
             avatar: user.avatar,
         };
         next();
