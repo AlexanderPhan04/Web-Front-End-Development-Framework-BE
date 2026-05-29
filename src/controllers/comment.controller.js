@@ -1,7 +1,7 @@
 const Comment = require("../models/comment.model");
 const Post = require("../models/post.model");
 
-const createCommentByPost = async (req, res) => {
+const getCommentByPost = async (req, res) => {
     try {
         const { postId } = req.params;
 
@@ -82,7 +82,7 @@ const deleteComment = async (req, res) => {
 };
 
 module.exports = {
-    createCommentByPost,
+    getCommentByPost,
     createComment,
     deleteComment,
 }
