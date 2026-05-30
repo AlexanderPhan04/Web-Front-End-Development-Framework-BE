@@ -53,13 +53,22 @@ const createComment = async (req, res) => {
 const deleteComment = async (req, res) => {
     try {
         const comment = await Comment.findById(req.params.id);
+
         if (!comment) {
             return res.status(404).json({
                 message: "Comment not found",
             });
         }
 
-        const isCommentAuthor = comment.author.toString() === req.user.id.trString();
+        const post = await Post.findById(comment.post);
+
+        if (!post) {
+            return res.status(404).json({
+                message: "Post not found",
+            });
+        }
+
+        const isCommentAuthor = comment.author.toString() === req.user.id.toString();
         const isPostAuthor = post.author.toString() === req.user.id.toString();
 
         if (!isCommentAuthor && !isPostAuthor) {

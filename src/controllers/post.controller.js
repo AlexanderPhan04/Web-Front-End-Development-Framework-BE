@@ -88,37 +88,39 @@ const createPost = async (req, res) => {
 };
 
 const updatePost = async (req, res) => {
-    try {
-        const { title, content, category } = req.body;
+  try {
+    const { title, content, category } = req.body;
 
-        const post = await Post.findById(req.params.id);
+    const post = await Post.findById(req.params.id);
 
-        if (!post) {
-            return res.status(404).json({
-                message: "Post not found",
-            });
-        }
-        if (post.author.toString() !== req.user.id) {
-            return res.status(403).json({
-                message: "Not authorized to update this post",
-            });
-        }
-        post.title = title || post.title;
-        post.content = content || post.content;
-        post.category = category || post.category;
-
-        await post.save();
-
-        return res.status(200).json({
-            message: "Post updated successfully",
-            post,
-        });
-    } catch (error) {
-        return res.status(500).json({
-            message: "Update post failed",
-            error: error.message,
-        });
+    if (!post) {
+      return res.status(404).json({
+        message: "Post not found",
+      });
     }
+
+    if (post.author.toString() !== req.user.id.toString()) {
+      return res.status(403).json({
+        message: "Not authorized to update this post",
+      });
+    }
+
+    post.title = title || post.title;
+    post.content = content || post.content;
+    post.category = category || post.category;
+
+    await post.save();
+
+    return res.status(200).json({
+      message: "Post updated successfully",
+      post,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: "Update post failed",
+      error: error.message,
+    });
+  }
 };
 
 const deletePost = async (req, res) => {
