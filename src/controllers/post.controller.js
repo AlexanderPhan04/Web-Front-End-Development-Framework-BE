@@ -1,4 +1,5 @@
 import Post from '../models/post.model.js';
+import Comment from '../models/comment.model.js';
 
 export const getPosts = async (req, res) => {
     try {
@@ -132,31 +133,34 @@ export const updatePost = async (req, res) => {
 };
 
 export const deletePost = async (req, res) => {
-    try {
-        const post = await Post.findById(req.params.id);
+  try {
+    const post = await Post.findById(req.params.id);
 
-        if (!post) {
-            return res.status(404).json({
-                message: "Post not found",
-            });
-        }
-        if (post.author.toString() !== req.user._id.toString()) {
-            return res.status(403).json({
-                message: "Not authorized to delete this post",
-            });
-        }
-
-        await post.deleteOne();
-
-        return res.status(200).json({
-            message: "Post deleted successfully",
-        });
-    } catch (error) {
-        return res.status(500).json({
-            message: "Delete post failed",
-            error: error.message,
-        });
+    if (!post) {
+      return res.status(404).json({
+        message: "Post not found",
+      });
     }
+
+    if (post.author.toString() !== req.user._id.toString()) {
+      return res.status(403).json({
+        message: "Not authorized to delete this post",
+      });
+    }
+
+    await Comment.deleteMany({ post: post._id });
+
+    await post.deleteOne();
+
+    return res.status(200).json({
+      message: "Post deleted successfully",
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: "Delete post failed",
+      error: error.message,
+    });
+  }
 };
 
 export const toggleLikePost = async (req, res) => {
