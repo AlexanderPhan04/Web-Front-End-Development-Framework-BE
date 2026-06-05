@@ -1,7 +1,7 @@
-const Comment = require("../models/comment.model");
-const Post = require("../models/post.model");
+import Comment from '../models/comment.model.js';
+import Post from '../models/post.model.js';
 
-const getCommentByPost = async (req, res) => {
+export const getCommentByPost = async (req, res) => {
     try {
         const { postId } = req.params;
 
@@ -20,7 +20,7 @@ const getCommentByPost = async (req, res) => {
     }
 };
 
-const createComment = async (req, res) => {
+export const createComment = async (req, res) => {
     try {
         const { postId } = req.params;
         const { content } = req.body;
@@ -50,7 +50,7 @@ const createComment = async (req, res) => {
     }
 };
 
-const deleteComment = async (req, res) => {
+export const deleteComment = async (req, res) => {
     try {
         const comment = await Comment.findById(req.params.id);
 
@@ -89,9 +89,3 @@ const deleteComment = async (req, res) => {
         });
     }
 };
-
-module.exports = {
-    getCommentByPost,
-    createComment,
-    deleteComment,
-}

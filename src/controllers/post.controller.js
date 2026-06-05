@@ -1,6 +1,6 @@
-const Post = require('../models/post.model');
+import Post from '../models/post.model.js';
 
-const getPosts = async (req, res) => {
+export const getPosts = async (req, res) => {
     try {
         const page = Number(req.query.page) || 1;
         const limit = Number(req.query.limit) || 6;
@@ -26,8 +26,13 @@ const getPosts = async (req, res) => {
         .skip((page - 1) * limit)
         .limit(limit);
 
+        const postsWithLikeCount = posts.map((post) => ({
+        ...post.toObject(),
+        likeCount: post.likes.length,
+        }));
+
         return res.status(200).json({
-            posts,
+            posts: postsWithLikeCount,
             totalPages,
             currentPage: page,
             total,
@@ -40,9 +45,9 @@ const getPosts = async (req, res) => {
     }
 };
 
-const getPostById = async (req, res) => {
+export const getPostById = async (req, res) => {
     try {
-        const post = await Post.getPostById(req.params.id).populate(
+        const post = await Post.findById(req.params.id).populate(
             "author",
             "name email avatar"
         );
@@ -54,7 +59,10 @@ const getPostById = async (req, res) => {
         }
 
         return res.status(200).json({
-            post,
+            post: {
+                ...post.toObject(),
+                likeCount: post.likes.length,
+            }
         });
     } catch (error) {
         return res.status(500).json({
@@ -64,7 +72,7 @@ const getPostById = async (req, res) => {
     }
 };
 
-const createPost = async (req, res) => {
+export const createPost = async (req, res) => {
     try {
         const { title, content, category } = req.body;
 
@@ -72,7 +80,7 @@ const createPost = async (req, res) => {
             title,
             content,
             category,
-            author: req.user.id,
+            author: req.user._id,
         });
 
         return res.status(201).json({
@@ -87,7 +95,7 @@ const createPost = async (req, res) => {
     }
 };
 
-const updatePost = async (req, res) => {
+export const updatePost = async (req, res) => {
   try {
     const { title, content, category } = req.body;
 
@@ -99,7 +107,7 @@ const updatePost = async (req, res) => {
       });
     }
 
-    if (post.author.toString() !== req.user.id.toString()) {
+    if (post.author.toString() !== req.user._id.toString()) {
       return res.status(403).json({
         message: "Not authorized to update this post",
       });
@@ -123,7 +131,7 @@ const updatePost = async (req, res) => {
   }
 };
 
-const deletePost = async (req, res) => {
+export const deletePost = async (req, res) => {
     try {
         const post = await Post.findById(req.params.id);
 
@@ -132,7 +140,7 @@ const deletePost = async (req, res) => {
                 message: "Post not found",
             });
         }
-        if (post.author.toString() !== req.user.id) {
+        if (post.author.toString() !== req.user._id.toString()) {
             return res.status(403).json({
                 message: "Not authorized to delete this post",
             });
@@ -151,7 +159,7 @@ const deletePost = async (req, res) => {
     }
 };
 
-const toggleLikePost = async (req, res) => {
+export const toggleLikePost = async (req, res) => {
     try {
         const post = await Post.findById(req.params.id);
 
@@ -187,7 +195,7 @@ const toggleLikePost = async (req, res) => {
     }
 };
 
-module.exports = {
+export default {
     getPosts,
     getPostById,
     createPost,

@@ -1,6 +1,7 @@
 {
   "name": "web-front-end-development-framework-be",
   "version": "1.0.0",
+  "type": "module",
   "description": "Backend RESTful API for Web Front-End Development Framework project",
   "main": "src/server.js",
   "scripts": {

@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const userSchema = new mongoose.Schema(
     {
@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema(
             type: String,
             required: [true, ''],
             unique: true,
-            lowcase: true,
+            lowercase: true,
             trim: true,
             match: [/^\S+@\S+\.\S+$/, "Please provide a valid email"],
         },
@@ -37,4 +37,6 @@ const userSchema = new mongoose.Schema(
     }
 );
 
-module.exports = mongoose.model('User', userSchema);
+const User = mongoose.model('User', userSchema);
+
+export default User;

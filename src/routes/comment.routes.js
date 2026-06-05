@@ -1,11 +1,11 @@
-const express = require('express');
-const {
+import express from 'express';
+import {
     getCommentByPost,
     createComment,
     deleteComment,
-} = require('../controllers/comment.controller');
+} from '../controllers/comment.controller.js';
 
-const protect = require("../middleware/auth.middleware");
+import protect from '../middleware/auth.middleware.js';
 
 const router = express.Router();
 
@@ -13,4 +13,4 @@ router.get("/posts/:postId/comments", getCommentByPost);
 router.post("/posts/:postId/comments", protect, createComment);
 router.delete("/comments/:id", protect, deleteComment);
 
-module.exports = router;
+export default router;
