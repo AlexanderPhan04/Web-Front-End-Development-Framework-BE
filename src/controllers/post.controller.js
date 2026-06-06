@@ -74,26 +74,26 @@ export const getPostById = async (req, res) => {
 };
 
 export const createPost = async (req, res) => {
-    try {
-        const { title, content, category } = req.body;
+  try {
+    const { title, content, category } = req.body;
 
-        const post = await Post.create({
-            title,
-            content,
-            category,
-            author: req.user._id,
-        });
+    const post = await Post.create({
+      title,
+      content,
+      category,
+      author: req.user._id,
+    });
 
-        return res.status(201).json({
-            message: "Post created successfully",
-            post,
-        });
-    } catch (error) {
-        return res.status(500).json({
-            message: "Create post failed",
-            error: error.message,
-        });
-    }
+    return res.status(201).json({
+      message: "Post created successfully",
+      post,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: "Create post failed",
+      error: error.message,
+    });
+  }
 };
 
 export const updatePost = async (req, res) => {
