@@ -1,0 +1,734 @@
+{
+  "info": {
+    "_postman_id": "f7b4116d-d11e-4f5c-acba-3387e629d6da",
+    "name": "ASM",
+    "description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "49668419",
+    "_collection_link": "https://go.postman.co/collection/49668419-f7b4116d-d11e-4f5c-acba-3387e629d6da?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Web-Front-End-Development-Framework-BE",
+      "item": [
+        {
+          "name": "1. API gốc",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "2.1 Register",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Alex\",\r\n    \"email\": \"info@alexanderphan.dev\",\r\n    \"password\": \"password\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/auth/register",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "2.2 Login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"info@alexanderphan.dev\",\r\n    \"password\": \"password\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "2.3 Get Me",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjM4MDAyMGU2NTZmYjRkOGI3YjA3ZSIsImlhdCI6MTc4MDcxMTUxOSwiZXhwIjoxNzgxMzE2MzE5fQ.OiqOjL6RrXQIYcnWwlbxKCScUxBiJ87Ttl6bmLjWdQQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/auth/me",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "auth",
+                "me"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "3.1 Create Post",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjM4MDAyMGU2NTZmYjRkOGI3YjA3ZSIsImlhdCI6MTc4MDcxMTUxOSwiZXhwIjoxNzgxMzE2MzE5fQ.OiqOjL6RrXQIYcnWwlbxKCScUxBiJ87Ttl6bmLjWdQQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"Bài viết đầu tiên\",\r\n    \"content\": \"Đây là bài viết đầu tiên trong hệ thống blog\",\r\n    \"category\": \"Technology\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/posts",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "posts"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "3.2 Get Post",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjM4MDAyMGU2NTZmYjRkOGI3YjA3ZSIsImlhdCI6MTc4MDcxMTUxOSwiZXhwIjoxNzgxMzE2MzE5fQ.OiqOjL6RrXQIYcnWwlbxKCScUxBiJ87Ttl6bmLjWdQQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"Bài viết đầu tiên\",\r\n    \"content\": \"Đây là bài viết đầu tiên trong hệ thống blog\",\r\n    \"category\": \"Technology\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/posts",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "posts"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "3.3 Test Search",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjM4MDAyMGU2NTZmYjRkOGI3YjA3ZSIsImlhdCI6MTc4MDcxMTUxOSwiZXhwIjoxNzgxMzE2MzE5fQ.OiqOjL6RrXQIYcnWwlbxKCScUxBiJ87Ttl6bmLjWdQQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"Bài viết đầu tiên\",\r\n    \"content\": \"Đây là bài viết đầu tiên trong hệ thống blog\",\r\n    \"category\": \"Technology\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/posts?search=đầu",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "posts"
+              ],
+              "query": [
+                {
+                  "key": "search",
+                  "value": "đầu"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "3.4 Test category filter",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjM4MDAyMGU2NTZmYjRkOGI3YjA3ZSIsImlhdCI6MTc4MDcxMTUxOSwiZXhwIjoxNzgxMzE2MzE5fQ.OiqOjL6RrXQIYcnWwlbxKCScUxBiJ87Ttl6bmLjWdQQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"Bài viết đầu tiên\",\r\n    \"content\": \"Đây là bài viết đầu tiên trong hệ thống blog\",\r\n    \"category\": \"Technology\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/posts?category=Technology",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "posts"
+              ],
+              "query": [
+                {
+                  "key": "category",
+                  "value": "Technology"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "3.5 Test pagination",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjM4MDAyMGU2NTZmYjRkOGI3YjA3ZSIsImlhdCI6MTc4MDcxMTUxOSwiZXhwIjoxNzgxMzE2MzE5fQ.OiqOjL6RrXQIYcnWwlbxKCScUxBiJ87Ttl6bmLjWdQQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"Bài viết đầu tiên\",\r\n    \"content\": \"Đây là bài viết đầu tiên trong hệ thống blog\",\r\n    \"category\": \"Technology\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/posts?page=1&limit=6",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "posts"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "6"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "3.6 Get post detail",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/posts/6a2386b0b05a148c7485cbd1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "posts",
+                "6a2386b0b05a148c7485cbd1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "3.7 Update Post",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjM4MDAyMGU2NTZmYjRkOGI3YjA3ZSIsImlhdCI6MTc4MDcxMTUxOSwiZXhwIjoxNzgxMzE2MzE5fQ.OiqOjL6RrXQIYcnWwlbxKCScUxBiJ87Ttl6bmLjWdQQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"Bài viết đã cập nhật\",\r\n  \"content\": \"Đây là nội dung sau khi cập nhật bài viết.\",\r\n  \"category\": \"Technology\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/posts/6a2386b0b05a148c7485cbd1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "posts",
+                "6a2386b0b05a148c7485cbd1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "3.8 Toggle Like",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjM4MDAyMGU2NTZmYjRkOGI3YjA3ZSIsImlhdCI6MTc4MDcxMTUxOSwiZXhwIjoxNzgxMzE2MzE5fQ.OiqOjL6RrXQIYcnWwlbxKCScUxBiJ87Ttl6bmLjWdQQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/posts/6a2386b0b05a148c7485cbd1/like",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "posts",
+                "6a2386b0b05a148c7485cbd1",
+                "like"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "4.1 Create Comment",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjM4MDAyMGU2NTZmYjRkOGI3YjA3ZSIsImlhdCI6MTc4MDcxMTUxOSwiZXhwIjoxNzgxMzE2MzE5fQ.OiqOjL6RrXQIYcnWwlbxKCScUxBiJ87Ttl6bmLjWdQQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"content\": \"Bình luận đầu tiên.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/posts/6a2386b0b05a148c7485cbd1/comments",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "posts",
+                "6a2386b0b05a148c7485cbd1",
+                "comments"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "4.2 Get comment by post",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjM4MDAyMGU2NTZmYjRkOGI3YjA3ZSIsImlhdCI6MTc4MDcxMTUxOSwiZXhwIjoxNzgxMzE2MzE5fQ.OiqOjL6RrXQIYcnWwlbxKCScUxBiJ87Ttl6bmLjWdQQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/posts/6a2386b0b05a148c7485cbd1/comments",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "posts",
+                "6a2386b0b05a148c7485cbd1",
+                "comments"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "4.3 Delete Comment",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjM4MDAyMGU2NTZmYjRkOGI3YjA3ZSIsImlhdCI6MTc4MDcxMTUxOSwiZXhwIjoxNzgxMzE2MzE5fQ.OiqOjL6RrXQIYcnWwlbxKCScUxBiJ87Ttl6bmLjWdQQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/comments/6a23aa4ebef05a1854423a45",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "comments",
+                "6a23aa4ebef05a1854423a45"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "4.4 Delete Post",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjM4MDAyMGU2NTZmYjRkOGI3YjA3ZSIsImlhdCI6MTc4MDcxMTUxOSwiZXhwIjoxNzgxMzE2MzE5fQ.OiqOjL6RrXQIYcnWwlbxKCScUxBiJ87Ttl6bmLjWdQQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/posts/6a2386b0b05a148c7485cbd1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "posts",
+                "6a2386b0b05a148c7485cbd1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "5.1 Test thử register thiếu email",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Quan\",\r\n  \"password\": \"123456\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/auth/register",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "5.2 Test create post thiếu title",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjM4MDAyMGU2NTZmYjRkOGI3YjA3ZSIsImlhdCI6MTc4MDcxMTUxOSwiZXhwIjoxNzgxMzE2MzE5fQ.OiqOjL6RrXQIYcnWwlbxKCScUxBiJ87Ttl6bmLjWdQQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"content\": \"Nội dung test đủ dài.\",\r\n  \"category\": \"Technology\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/posts",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "posts"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "5.3 Test đăng nhập sai",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"info@alexanderphan.dev\",\r\n  \"password\": \"wrongpassword\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "5.4 Test create post without token",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"Post không token\",\r\n  \"content\": \"Nội dung test route protected không có token.\",\r\n  \"category\": \"Technology\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/posts",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "posts"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "5.5 Test invalid post id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/posts/abc123",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "posts",
+                "abc123"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
