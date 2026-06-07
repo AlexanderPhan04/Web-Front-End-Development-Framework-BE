@@ -2,6 +2,7 @@ import express from 'express';
 import {
     getPosts,
     getPostById,
+    getMyPosts,
     createPost,
     updatePost,
     deletePost,
@@ -21,6 +22,7 @@ import {
 const router = express.Router();
 
 router.get("/", getPostsValidator, validate, getPosts);
+router.get("/my-posts", protect, getMyPosts);
 router.get("/:id", postIdValidator, validate, getPostById);
 
 router.post("/", protect, createPostValidator, validate, createPost);

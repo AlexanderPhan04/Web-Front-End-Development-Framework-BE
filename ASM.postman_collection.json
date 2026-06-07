@@ -331,6 +331,37 @@
           "response": []
         },
         {
+          "name": "3.5.1 Get My Posts",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjM4MDAyMGU2NTZmYjRkOGI3YjA3ZSIsImlhdCI6MTc4MDcxMTUxOSwiZXhwIjoxNzgxMzE2MzE5fQ.OiqOjL6RrXQIYcnWwlbxKCScUxBiJ87Ttl6bmLjWdQQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/posts/my-posts",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "posts",
+                "my-posts"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "name": "3.6 Get post detail",
           "request": {
             "method": "GET",

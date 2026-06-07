@@ -73,6 +73,29 @@ export const getPostById = async (req, res) => {
     }
 };
 
+export const getMyPosts = async (req, res) => {
+  try {
+    const posts = await Post.find({ author: req.user._id })
+      .populate("author", "name email avatar")
+      .sort({ createdAt: -1 });
+
+    const postsWithLikeCount = posts.map((post) => ({
+      ...post.toObject(),
+      likeCount: post.likes.length,
+    }));
+
+    return res.status(200).json({
+      posts: postsWithLikeCount,
+      total: postsWithLikeCount.length,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: "Get my posts failed",
+      error: error.message,
+    });
+  }
+};
+
 export const createPost = async (req, res) => {
   try {
     const { title, content, category } = req.body;
@@ -202,6 +225,7 @@ export const toggleLikePost = async (req, res) => {
 export default {
     getPosts,
     getPostById,
+    getMyPosts,
     createPost,
     updatePost,
     deletePost,
